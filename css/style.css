@@ -1666,6 +1666,7 @@ img {
   min-width: 20rem;
   padding: 1.3rem 2rem 1.3rem 5.5rem;
   border: none;
+  text-align: center;
   text-decoration: none !important;
   -webkit-transition: background-color .2s linear;
   -o-transition: background-color .2s linear;
