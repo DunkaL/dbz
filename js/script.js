@@ -4723,7 +4723,7 @@ document.addEventListener("DOMContentLoaded", function () {
         prevEl: '.inner__content-services-btn-prev'
       }
     });
-  }, 100);
+  }, 200);
 
   if (window.innerWidth < 740) {
     new Swiper('.reviews__swiper', {
