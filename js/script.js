@@ -4647,8 +4647,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   var butTon = document.querySelectorAll('.btn-ripple');
 
-  var _loop = function _loop(_i) {
-    butTon[_i].addEventListener('click', function (e) {
+  var _loop = function _loop(i) {
+    butTon[i].addEventListener('click', function (e) {
       e.preventDefault();
       var ripple = document.querySelector('.ripple');
 
@@ -4656,8 +4656,8 @@ document.addEventListener("DOMContentLoaded", function () {
         ripple.remove();
       }
 
-      var buttonWidth = butTon[_i].offsetWidth,
-          buttonHeight = butTon[_i].offsetHeight;
+      var buttonWidth = butTon[i].offsetWidth,
+          buttonHeight = butTon[i].offsetHeight;
 
       if (buttonWidth >= buttonHeight) {
         buttonHeight = buttonWidth;
@@ -4674,13 +4674,12 @@ document.addEventListener("DOMContentLoaded", function () {
       s.height = buttonHeight + 'px';
       s.top = y + 'px';
       s.left = x + 'px';
-
-      butTon[_i].appendChild(span);
+      butTon[i].appendChild(span);
     });
   };
 
-  for (var _i = 0; _i < butTon.length; _i++) {
-    _loop(_i);
+  for (var i = 0; i < butTon.length; i++) {
+    _loop(i);
   }
 
   ;
@@ -4690,18 +4689,14 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('#fond').classList.toggle('active');
     document.querySelector('#navbar-nav').classList.toggle('active');
   });
-  var tabNavs = document.querySelectorAll('.tabs-list-link');
-  var tabPanes = document.querySelectorAll(".tabs-content-pane");
-
-  for (var i = 0; i < tabNavs.length; i++) {
-    tabNavs[i].addEventListener("click", function (e) {
+  var tabNavs = document.querySelectorAll('.tabs-list-item'),
+      tabPanes = document.querySelectorAll('.tabs-content-pane');
+  tabNavs.forEach(function (tabNavsItem) {
+    tabNavsItem.addEventListener("click", function (e) {
       e.preventDefault();
-      var activeTabAttr = e.target.getAttribute("data-tab");
 
-      for (var j = 0; j < tabNavs.length; j++) {
-        var contentAttr = tabPanes[j].getAttribute("data-tab-content");
-
-        if (activeTabAttr === contentAttr) {
+      for (var j = 0; j < tabPanes.length; j++) {
+        if (e.target.getAttribute("data-tab") == tabPanes[j].getAttribute("data-tab-content")) {
           tabNavs[j].classList.add("active");
           tabPanes[j].classList.add("active");
         } else {
@@ -4712,8 +4707,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       ;
     });
-  }
-
+  });
   setTimeout(function () {
     var initSwiper = new Swiper('.inner__content-services', {
       slidesPerView: 'auto',
