@@ -4722,6 +4722,9 @@ document.addEventListener("DOMContentLoaded", function () {
   if (window.innerWidth < 740) {
     new Swiper('.reviews__swiper', {
       slidesPerView: 1,
+      autoplay: {
+        delay: 2500
+      },
       navigation: {
         nextEl: '.reviews__swiper-next',
         prevEl: '.reviews__swiper-prev'
